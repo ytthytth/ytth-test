@@ -1,9 +1,12 @@
-Feature: Confirm that configuration was applied
-  In order to know that the Drupal configuration was correctly applied for the tests
-  As a website developer
-  I need to be able to confirm that the site slogan is correct
+Feature: Create Content through Drupal Content UI
+  In order to know that the Drupal content UI is working
+  As a website administrator
+  I need to be able to add a basic page
 
   @api
   Scenario: Add a basic page
-    Given I am on "/"
-    Then I should see "Making the world amazing"
+    Given I am logged in as a user with the "administrator" role
+    And I am on "/node/add/page"
+    And I enter "Test Page" for "Title"
+    And I press "Save and publish"
+    Then I should see "Basic page Test Page has been created."
